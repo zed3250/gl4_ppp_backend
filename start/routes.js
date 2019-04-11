@@ -14,7 +14,10 @@
 */
 
 const Route = use('Route');
+Route.get('users/profile', 'UserController.getProfile');
+
 Route.resource('users', 'UserController').apiOnly();
+Route.resource('projects', 'ProjectController').apiOnly();
 Route.post('/login', 'UserController.login');
 
 

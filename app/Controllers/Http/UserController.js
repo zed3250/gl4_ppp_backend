@@ -31,7 +31,17 @@ class UserController {
     return await user.save();
   }
 
-
+  /**
+   * GET: /users/profile
+   * Returns currently logged in user's profile
+   */
+  async getProfile({auth, response}) {
+    try {
+      return await auth.getUser();
+    } catch (error) {
+      response.send('You are not logged in');
+    }
+  }
   /**
  * PUT: /users/:id
  * Updates a user

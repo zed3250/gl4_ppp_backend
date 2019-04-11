@@ -1,0 +1,7 @@
+organization=haouech-achref-github
+projectKey=Haouech-Achref_gl4_ppp_backend
+serverUrl=https://sonarcloud.io
+serverVersion=7.7.0.22299
+dashboardUrl=https://sonarcloud.io/dashboard?id=Haouech-Achref_gl4_ppp_backend
+ceTaskId=AWk2DlSyvpMtRsAR8bfy
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AWk2DlSyvpMtRsAR8bfy
