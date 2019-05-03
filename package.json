@@ -23,7 +23,7 @@
     "@adonisjs/cors": "^1.0.6",
     "@adonisjs/drive": "^1.0.4",
     "@adonisjs/fold": "^4.0.8",
-    "@adonisjs/framework": "^5.0.7",
+    "@adonisjs/framework": "^5.0.13",
     "@adonisjs/ignitor": "^2.0.6",
     "@adonisjs/lucid": "^5.0.4",
     "@adonisjs/session": "^1.0.25",
@@ -31,7 +31,8 @@
     "@adonisjs/validator": "^5.0.3",
     "adm-zip": "^0.4.11",
     "del": "^3.0.0",
-    "lucid-mongo": "^3.1.0"
+    "lucid-mongo": "^3.1.5",
+    "minio": "^7.0.7"
   },
   "devDependencies": {
     "eslint": "^5.14.1",
