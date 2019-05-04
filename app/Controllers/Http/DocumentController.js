@@ -35,7 +35,8 @@ class DocumentController {
       file.fileName,
       fileStream,
       function(err, etag) {
-        return console.log(err, etag); // err should be null
+          if (err)
+            return console.log(err, etag); // err should be null
       }
     );
 
