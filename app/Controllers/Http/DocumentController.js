@@ -17,18 +17,31 @@ const minioClient = new Minio.Client({
  * Controller to create and get files from the minio server
  */
 class DocumentController {
+
+  makeid(length) {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+       result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+ }
+
   async createDocument({ request }) {
     const file = request.file("file");
     const bucket = request.input("project") + "-" + request.input("process");
     const name = request.input("name");
+    var random = makeid(6);
+    random += ".pdf";
     await file.move(Helpers.tmpPath(), {
-      name: "temp.pdf",
+      name: random,
       overwrite: true
     });
     if (!file.moved()) {
       return file.error();
     }
-    const path = Helpers.tmpPath("temp.pdf");
+    const path = Helpers.tmpPath(random);
     var fileStream = fs.createReadStream(path);
 
     minioClient.putObject(bucket, name, fileStream, function(err, etag) {
@@ -42,7 +55,9 @@ class DocumentController {
   async getDocument({ params , response }) {
     const path = params.project + "-" + params.process;
     const name = params.document;
-    const tempPath = Helpers.tmpPath("temp.pdf");
+    var random = makeid(6);
+    random += ".pdf";
+    const tempPath = Helpers.tmpPath(random);
 
     minioClient.fGetObject(path, name, tempPath, function(err) {
       if (err) {
@@ -50,7 +65,7 @@ class DocumentController {
       }
       
     })
-    response.download(tempPath);
+    response.download(tempPath, name);
   }
   
 
