@@ -20,5 +20,6 @@ Route.resource('users', 'UserController').apiOnly();
 Route.resource('projects', 'ProjectController').apiOnly();
 Route.post('/login', 'UserController.login');
 Route.post('/doc', 'DocumentController.createDocument');
+Route.get('/doc/:project/:process/:document', 'DocumentController.getDocument');
 
 

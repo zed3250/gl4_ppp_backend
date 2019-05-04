@@ -22,10 +22,10 @@ module.exports = {
     connectionString: Env.get('DB_CONNECTION_STRING', ''),
     connection: {
       host: Env.get('DB_HOST', 'localhost'),
-      port: Env.get('DB_PORT', 27030),
-      username: Env.get('DB_USER', 'admin'),
+      port: Env.get('DB_PORT', 27017),
+      username: Env.get('DB_USER', ''),
       password: Env.get('DB_PASSWORD', ''),
-      database: Env.get('DB_DATABASE', 'adonis'),
+      database: Env.get('DB_DATABASE', 'prince2'),
       options: {
         // replicaSet: Env.get('DB_REPLICA_SET', '')
         // ssl: Env.get('DB_SSL, '')
