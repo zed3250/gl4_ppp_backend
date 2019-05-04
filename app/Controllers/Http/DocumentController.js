@@ -16,12 +16,11 @@ const minioClient = new Minio.Client({
  */
 class DocumentController {
 
-    createFolder() {
+    createDocument({ request, response }) {
 
-        minioClient.makeBucket('europetrip', 'us-east-1', function (err) {
-            if (err) return console.log(err)
-            console.log('Bucket created successfully in "us-east-1".')
-        });
+        const body = request.all();
+
+        
     }
 }
 module.exports = DocumentController;
