@@ -12,8 +12,10 @@ class ProjectController {
    * GET: /projects
    * Returns all projects
    */
-  async index() {
-    return await Project.query().fetch();
+  async index({request}) {
+    const queryParams = request.get();
+
+    return await Project.query().where({queryParams}).fetch();
   }
 
   /**
@@ -23,6 +25,21 @@ class ProjectController {
   async show({params}) {
     return await Project.query().where({_id: params.id}).first();
   }
+
+  /**
+   * Returns projects of the user
+   * @param {*} param0
+   */
+  async getUserProjects({auth}) {
+    const Database = use('Database');
+    const db = await Database.connect('prince2');
+    const user = await auth.getUser();
+    const projects = await db.collection('projects').find({
+      collaborators: {$elemMatch: {collaboratorId: user._id.toString()}},
+    }).toArray();
+    return projects;
+  }
+
 
   /**
  * POST: /projects
