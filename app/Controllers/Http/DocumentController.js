@@ -16,17 +16,19 @@ const minioClient = new Minio.Client({
 /**
  * Controller to create and get files from the minio server
  */
-class DocumentController {
 
-  randomString(length) {
-    var result           = '';
-    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-    var charactersLength = characters.length;
-    for ( var i = 0; i < length; i++ ) {
-       result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
- }
+function randomString(length) {
+  var result           = '';
+  var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  var charactersLength = characters.length;
+  for ( var i = 0; i < length; i++ ) {
+     result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+}
+
+
+class DocumentController {
 
    async createDocument({ request }) {
     var document = new  Document();
@@ -64,13 +66,18 @@ class DocumentController {
     random += ".pdf";
     const tempPath = Helpers.tmpPath(random);
 
-    minioClient.fGetObject(path, name, tempPath, function(err) {
+    minioClient.fGetObject(path, name, tempPath, (err) => {
       if (err) {
         return console.log(err);
       }
-      
-    })
-    response.download(tempPath, name);
+      console.log('recieved');
+      console.log('sending');
+    });
+    setTimeout(() => {
+      response.header('Content-Type', 'application/pdf');
+      console.log('sent');
+      response.download(tempPath, name);
+    }, 1500);
   }
   
 
