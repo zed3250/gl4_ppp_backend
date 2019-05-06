@@ -29,9 +29,14 @@ class DocumentController {
  }
 
    async createDocument({ request }) {
+    var document = new  Document();
+    document.docName = request.input("docName");
+    document.docType = request.input('docType');
+    document.docPath = request.input("project") + "-" + request.input("process");
+    await document.save();
     const file = request.file("file");
     const bucket = request.input("project") + "-" + request.input("process");
-    const name = request.input("name");
+    const name = request.input("docName");
     var random = randomString(6);
     random += ".pdf";
     await file.move(Helpers.tmpPath(), {
