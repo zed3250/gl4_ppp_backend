@@ -18,7 +18,7 @@ const minioClient = new Minio.Client({
  */
 class DocumentController {
 
-  makeid(length) {
+  randomString(length) {
     var result           = '';
     var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
     var charactersLength = characters.length;
@@ -28,11 +28,11 @@ class DocumentController {
     return result;
  }
 
-  async createDocument({ request }) {
+   async createDocument({ request }) {
     const file = request.file("file");
     const bucket = request.input("project") + "-" + request.input("process");
     const name = request.input("name");
-    var random = makeid(6);
+    var random = randomString(6);
     random += ".pdf";
     await file.move(Helpers.tmpPath(), {
       name: random,
@@ -55,7 +55,7 @@ class DocumentController {
   async getDocument({ params , response }) {
     const path = params.project + "-" + params.process;
     const name = params.document;
-    var random = makeid(6);
+    var random = randomString(6);
     random += ".pdf";
     const tempPath = Helpers.tmpPath(random);
 
