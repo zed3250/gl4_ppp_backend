@@ -15,7 +15,7 @@ class ProjectController {
   async index({request}) {
     const queryParams = request.get();
 
-    return await Project.query().where({queryParams}).fetch();
+    return await Project.query().where(queryParams).fetch();
   }
 
   /**
