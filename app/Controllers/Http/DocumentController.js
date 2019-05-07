@@ -2,6 +2,7 @@
 const Env = use("Env");
 const fs = require("fs");
 const Helpers = use("Helpers");
+const Project = use('App/Models/Project');
 
 /**
  * Controller to create and get files from the minio server
@@ -10,15 +11,16 @@ const Helpers = use("Helpers");
 class DocumentController {
 
    async createDocument({ request }) {
-    var document ;
-    var project = Project.query().where({_id: input("project")}).first();
-    var process = input('process');
+    var document ={} ;
+    var projectId = request.input("project");
+    var project  = await Project.query().where({_id: projectId}).first();
+    var process = request.input('process');
 
 
     document.docName = request.input("docName");
     document.docType = request.input('docType');
-    const path = Helpers.publicPath(params.project + "/" + params.process + "/" + params.document);
-    document.docPath = path;
+    const fullPath = Helpers.publicPath(projectId + "/" + process + "/" + request.input("docName"));
+    document.docPath = fullPath;
     document.permittedRoles = request.input('roles');
     
     project.processes.forEach(element => {
@@ -32,6 +34,7 @@ class DocumentController {
     const file = request.file("file");
     const name = request.input("docName");
 
+    const path = Helpers.publicPath(projectId + "/" + process );
     await file.move(path, {
       name: name,
       overwrite: true
@@ -42,10 +45,9 @@ class DocumentController {
     return "document created";
   }
 
-  getDocument({ params , response }) {
-    const fullPath = params.input('path');
-    response.header('Content-Type', 'application/pdf');
-    response.download(fullPath, name);
+  getDocument({ request , response }) {
+    const fullPath = request.only(['path']).path;
+    response.attachment(fullPath);
   }
   
 
