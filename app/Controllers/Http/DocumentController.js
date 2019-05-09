@@ -1,11 +1,9 @@
 "use strict";
-const Env = use("Env");
-const fs = require("fs");
 const Helpers = use("Helpers");
 const Project = use('App/Models/Project');
 
 /**
- * Controller to create and get files from the minio server
+ * Controller to create and get files
  */
 
 class DocumentController {
