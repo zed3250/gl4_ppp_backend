@@ -1,7 +1,7 @@
 'use strict';
+const Helpers = use("Helpers");
 
 const Project = use('App/Models/Project');
-const Stage = use('App/Models/Stage');
 
 
 /**
@@ -46,8 +46,47 @@ class ProjectController {
  * Creates a project
  */
   async store({request}) {
-    const project = new Project(request.all());
-    return await project.save();
+    //const project = new Project(request.all());
+    console.log('test');
+    var project = new Project();
+    project.name = request.input('name');
+    project.startDate = request.input('startDate');
+    project.endDate = request.input('endDate');
+    project.description = request.input('description');
+
+    var collaboratorIds = request.input('collaborators');
+    var roles = request.input('roles');
+    
+    var collaborators = [];
+    for (let index = 0; index < collaboratorIds.length; index++) {
+      const id = collaboratorIds[index];
+      const role = roles[index];
+      const collaborator = { 'collaboratorId': id, 'role': role };
+      collaborators.push(collaborator);
+    }
+    project.collaborators = collaborators;
+
+    var process = {};
+    process.name = "Project initiation";
+    process.description = "Mandate For the Project"
+    process.startDate = project.startDate;
+    process.endDate = null; //FIXME: set an endDate to project initiation stage
+    process.isActive = true;
+    process.docs = [];
+    project.processes = [];
+    project.processes.push(process);
+
+    await project.save();
+
+    var id = project._id.toString();
+
+    const path = Helpers.publicPath(id);
+    const file = request.file("mandate");
+    await file.move(path);
+    if (!file.moved()) {
+      return file.error();
+    }
+    return true;
   }
 
 
