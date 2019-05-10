@@ -47,7 +47,6 @@ class ProjectController {
  */
   async store({request}) {
     //const project = new Project(request.all());
-    console.log('test');
     var project = new Project();
     project.name = request.input('name');
     project.startDate = request.input('startDate');
@@ -58,11 +57,17 @@ class ProjectController {
     var roles = request.input('roles');
     
     var collaborators = [];
-    for (let index = 0; index < collaboratorIds.length; index++) {
-      const id = collaboratorIds[index];
-      const role = roles[index];
-      const collaborator = { 'collaboratorId': id, 'role': role };
+    if(!Array.isArray(collaboratorIds)){
+      const collaborator = { 'collaboratorId': collaboratorIds, 'role': roles };
       collaborators.push(collaborator);
+    }
+    else {
+      for (let index = 0; index < collaboratorIds.length; index++) {
+        const id = collaboratorIds[index];
+        const role = roles[index];
+        const collaborator = { 'collaboratorId': id, 'role': role };
+        collaborators.push(collaborator);
+      }
     }
     project.collaborators = collaborators;
 
@@ -70,7 +75,7 @@ class ProjectController {
     process.name = "Project initiation";
     process.description = "Mandate For the Project"
     process.startDate = project.startDate;
-    process.endDate = null; //FIXME: set an endDate to project initiation stage
+    process.endDate = request.input('processEndDate');
     process.isActive = true;
     process.docs = [];
     project.processes = [];
