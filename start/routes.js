@@ -22,5 +22,6 @@ Route.post('/login', 'UserController.login');
 Route.post('/doc', 'DocumentController.createDocument');
 Route.get('/user/:id/projects','ProjectController.getUserProjects');
 Route.post('/showdoc', 'DocumentController.getDocument');
+Route.get('/mandate/:id', 'DocumentController.getMandate');
 
 

@@ -1,6 +1,7 @@
 "use strict";
 const Helpers = use("Helpers");
 const Project = use('App/Models/Project');
+var fs = require('fs');
 
 /**
  * Controller to create and get files
@@ -34,7 +35,7 @@ class DocumentController {
 
     const path = Helpers.publicPath(projectId + "/" + process );
     await file.move(path, {
-      name: name,
+      name: "mandate.pdf",
       overwrite: true
     });
     if (!file.moved()) {
@@ -44,10 +45,14 @@ class DocumentController {
   }
 
   getDocument({ request , response }) {
-    const fullPath = request.only(['path']).path;
+    const fullPath = request.all().path;
     response.attachment(fullPath);
   }
-  
+  getMandate({params, response}) {
+    const id = params.id;
+    const path = Helpers.publicPath(id+'/mandate.pdf');
+    response.attachment(path);
+  }
 
 }
 module.exports = DocumentController;
