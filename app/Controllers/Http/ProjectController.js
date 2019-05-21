@@ -1,5 +1,6 @@
 'use strict';
 const Helpers = use("Helpers");
+var ObjectID = require('mongodb').ObjectID;
 
 const Project = use('App/Models/Project');
 
@@ -72,6 +73,7 @@ class ProjectController {
     project.collaborators = collaborators;
 
     var process = {};
+    process._id = new ObjectID();
     process.name = "Project initiation";
     process.description = "Mandate For the Project"
     process.startDate = project.startDate;
@@ -87,7 +89,9 @@ class ProjectController {
 
     const path = Helpers.publicPath(id);
     const file = request.file("mandate");
-    await file.move(path);
+    await file.move(path,{
+      name: 'mandate.pdf'
+    });
     if (!file.moved()) {
       return file.error();
     }
