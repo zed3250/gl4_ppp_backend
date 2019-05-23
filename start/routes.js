@@ -26,6 +26,8 @@ Route.get('/mandate/:id', 'DocumentController.getMandate');
 Route.post('/process', 'ProcessController.createProcess');
 Route.post('/notif', 'NotificationController.createNotif');
 
+Route.post('/create/pid/:idProject/:idProcess', 'DocumentController.createPid');
+
 
 
 
