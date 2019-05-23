@@ -31,7 +31,6 @@ class DocumentController {
     await project.save();
 
     const file = request.file("file");
-    const name = request.input("docName");
 
     const path = Helpers.publicPath(projectId + "/" + process );
     await file.move(path, {
