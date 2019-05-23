@@ -31,7 +31,9 @@
     "@adonisjs/validator": "^5.0.3",
     "adm-zip": "^0.4.11",
     "del": "^3.0.0",
-    "lucid-mongo": "^3.1.5"
+    "lucid-mongo": "^3.1.5",
+    "node-latex": "^2.6.0",
+    "replace-in-file": "^4.1.0"
   },
   "devDependencies": {
     "eslint": "^5.14.1",
