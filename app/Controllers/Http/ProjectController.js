@@ -82,6 +82,7 @@ class ProjectController {
     process.docs = [];
     project.processes = [];
     project.processes.push(process);
+    project.notifs= [] ;
 
     await project.save();
 
