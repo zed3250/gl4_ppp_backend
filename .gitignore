@@ -13,5 +13,11 @@ database/development.sqlite
 # Public path
 public
 
+#VsCode Settings
+.vscode/settings.json
+
+#.env
+.env
+
 .idea
 .sonarlint
