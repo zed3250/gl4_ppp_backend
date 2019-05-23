@@ -5,7 +5,7 @@ const Model = use('Model');
 /**
  * The project model
  */
-class Project extends Model {
+class Notifications extends Model {
   /**
    * Hides the created_at and updated_at fields
    */

@@ -24,4 +24,8 @@ Route.get('/user/:id/projects','ProjectController.getUserProjects');
 Route.post('/showdoc', 'DocumentController.getDocument');
 Route.get('/mandate/:id', 'DocumentController.getMandate');
 
+Route.post('/notif', 'NotificationController.createNotif');
+
+
+
 
