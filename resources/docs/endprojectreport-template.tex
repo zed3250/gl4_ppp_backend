@@ -1,0 +1,70 @@
+\documentclass{report}
+
+\usepackage{prince2}
+\usepackage{hyperref}
+\usepackage{color}
+
+\usepackage[T1]{fontenc}
+\usepackage{titlesec, blindtext, color}
+\definecolor{gray75}{gray}{0.75}
+\newcommand{\hsp}{\hspace{20pt}}
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\Huge\bfseries}
+\renewcommand\thesection{\arabic{section}.}
+\begin{document}
+\documenttype{End Project Report}
+\project{@ProjectName}
+\date{\today}
+\author{@Author}
+\version{@Version}
+
+\maketitle
+
+\tableofcontents
+
+\newpage
+
+
+\section{Project Manager Report}
+@ProjectManagerReport
+
+\section{Review of Business Case}
+@ReviewOfBusinessCase
+
+\section{Benefits Achieved to Date}
+@BenefitsAchievedToDate
+
+\section{Residual Benefits Expected}
+@ResidualBenefitsExpected
+
+\section{Expected Net Benefits}
+@ExpectedNetBenefits
+
+\section{Deviations from The Approved Business Case}
+@DeviationsFromTheApprovedBusinessCase
+
+\section{Aggregated Risk Exposure}
+@AggregatedRiskExposure
+
+\section{Review of Project Objectives}
+@ReviewOfProjectObjectives
+
+\section{Review of Stage Objectives}
+@ReviewOfStageObjectives
+
+\section{Review of Team Performance}
+@ReviewOfTeamPerformance
+
+\section{Lessons Report}
+@LessonsReport
+
+\section{Review of Products}
+@ReviewOfProducts
+
+\section{Project Product Handover}
+@ProjectProductHandover
+
+\section{Summary of Follow-on Action Recommendations}
+@SummaryOfFollowOnActionRecommendations
+
+
+\end{document}

@@ -1,0 +1,79 @@
+\documentclass{report}
+
+\usepackage{prince2}
+\usepackage{hyperref}
+\usepackage{color}
+
+\usepackage[T1]{fontenc}
+\usepackage{titlesec, blindtext, color}
+\definecolor{gray75}{gray}{0.75}
+\newcommand{\hsp}{\hspace{20pt}}
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\Huge\bfseries}
+\renewcommand\thesection{\arabic{section}.}
+\begin{document}
+\documenttype{Project initiation documentation}
+\project{@ProjectName}
+\date{\today}
+\author{@Author}
+\version{@Version}
+
+\maketitle
+
+\tableofcontents
+
+\newpage
+
+\chapter{Definition}
+\section{Background}
+@Background
+
+\section{Main Goal}
+@MainGoal
+
+\section{Desired Outcomes}
+@DesiredOutcomes
+
+\section{Interfaces}
+@Interfaces
+
+\section{Project Approach}
+@ProjectApproach
+
+\section{Acceptance Responsibilities}
+@AcceptanceResponsibilities
+
+\chapter{Reference}
+\section{Project Product Description}
+@ProjectProductDescription
+
+\section{Business Case}
+@BusinessCase
+
+\section{Stakeholder List}
+@StakeholderList
+
+\section{Quality Management Approach}
+@QualityManagementApproach
+
+\section{Change Control Approach}
+@ChangeControlApproach
+
+\section{Risk Management Approach}
+@RiskManagementApproach
+
+\section{Communication Management Approach}
+@CommunicationManagementApproach
+
+\section{Project Plan}
+@ProjectPlan
+
+\chapter{Project Management Team}
+@ProjectManagementTeam
+
+\chapter{Project Controls}
+@ProjectControls
+
+\chapter{Tailoring}
+@Tailoring
+
+\end{document}
