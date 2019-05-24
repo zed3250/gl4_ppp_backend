@@ -47,13 +47,53 @@ class DocumentController {
   }
 
   async createPid({ request, params }) {
+    //create a copy of the template
     await fs.copyFileSync(Helpers.resourcesPath('docs/pid-template.tex'), Helpers.resourcesPath('docs/tmp/pid.tex'));
-    var background = request.all().background;
     //background
-    const options = {
+    var background = request.all().background;
+    var options = {
       files: Helpers.resourcesPath('docs/tmp/pid.tex'),
       from: '@Background',
       to: background,
+    };
+    try {
+      await replace(options);
+    }
+    catch (error) {
+      console.error('Error occurred:', error);
+    }
+    //ProjectName
+    var projectName = request.all().projectName;
+    options = {
+      files: Helpers.resourcesPath('docs/tmp/pid.tex'),
+      from: '@ProjectName',
+      to: projectName,
+    };
+    try {
+      await replace(options);
+    }
+    catch (error) {
+      console.error('Error occurred:', error);
+    }
+    //Author
+    var author = request.all().author;
+    options = {
+      files: Helpers.resourcesPath('docs/tmp/pid.tex'),
+      from: '@Author',
+      to: author,
+    };
+    try {
+      await replace(options);
+    }
+    catch (error) {
+      console.error('Error occurred:', error);
+    }
+    //Version
+    var version = request.all().version;
+    options = {
+      files: Helpers.resourcesPath('docs/tmp/pid.tex'),
+      from: '@Version',
+      to: version,
     };
     try {
       await replace(options);
