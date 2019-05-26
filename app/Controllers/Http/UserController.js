@@ -22,6 +22,10 @@ class UserController {
     return await User.query().where({_id: params.id}).first();
   }
 
+  async getUserByEmail({request}) {
+    return await User.query().where({email: request.all().email}).first();
+  }
+
   /**
  * POST: /users
  * Creates a user

@@ -25,6 +25,10 @@ Route.post('/showdoc', 'DocumentController.getDocument');
 Route.get('/mandate/:id', 'DocumentController.getMandate');
 
 Route.post('/notif', 'NotificationController.createNotif');
+Route.post('/userByEmail', 'UserController.getUserByEmail');
+Route.post('/process', 'NotificationController.createProcess');
+Route.post('/updateProcess', 'NotificationController.updateProcess');
+
 
 
 
