@@ -101,6 +101,110 @@ class DocumentController {
     catch (error) {
       console.error('Error occurred:', error);
     }
+    //ExecutiveSummary
+    var executiveSummary = request.all().executiveSummary;
+    options = {
+      files: Helpers.resourcesPath('docs/tmp/pid.tex'),
+      from: '@ExecutiveSummary',
+      to: executiveSummary,
+    };
+    try {
+      await replace(options);
+    }
+    catch (error) {
+      console.error('Error occurred:', error);
+    }
+    //Reasons
+    var reasons = request.all().reasons;
+    options = {
+      files: Helpers.resourcesPath('docs/tmp/pid.tex'),
+      from: '@Reasons',
+      to: reasons,
+    };
+    try {
+      await replace(options);
+    }
+    catch (error) {
+      console.error('Error occurred:', error);
+    }
+    //Options
+    options = {
+      files: Helpers.resourcesPath('docs/tmp/pid.tex'),
+      from: '@Options',
+      to:  request.all().options
+    };
+    try {
+      await replace(options);
+    }
+    catch (error) {
+      console.error('Error occurred:', error);
+    }
+    //ExpectedBenefitsAndDisbenefits
+    var expectedBenefitsAndDisbenefits = request.all().expectedBenefitsAndDisbenefits;
+    options = {
+      files: Helpers.resourcesPath('docs/tmp/pid.tex'),
+      from: '@ExpectedBenefitsAndDisbenefits',
+      to:  expectedBenefitsAndDisbenefits
+    };
+    try {
+      await replace(options);
+    }
+    catch (error) {
+      console.error('Error occurred:', error);
+    }
+    //Risks
+    var risks = request.all().risks;
+    options = {
+      files: Helpers.resourcesPath('docs/tmp/pid.tex'),
+      from: '@Risks',
+      to:  risks
+    };
+    try {
+      await replace(options);
+    }
+    catch (error) {
+      console.error('Error occurred:', error);
+    }
+    //Cost
+    var cost = request.all().cost;
+    options = {
+      files: Helpers.resourcesPath('docs/tmp/pid.tex'),
+      from: '@Cost',
+      to:  cost
+    };
+    try {
+      await replace(options);
+    }
+    catch (error) {
+      console.error('Error occurred:', error);
+    }
+    //Timescales
+    var timescales = request.all().timescales;
+    options = {
+      files: Helpers.resourcesPath('docs/tmp/pid.tex'),
+      from: '@Timescales',
+      to:  timescales
+    };
+    try {
+      await replace(options);
+    }
+    catch (error) {
+      console.error('Error occurred:', error);
+    }
+    //InvestmentAppraisal
+    var investmentAppraisal = request.all().investmentAppraisal;
+    options = {
+      files: Helpers.resourcesPath('docs/tmp/pid.tex'),
+      from: '@InvestmentAppraisal',
+      to:  investmentAppraisal
+    };
+    try {
+      await replace(options);
+    }
+    catch (error) {
+      console.error('Error occurred:', error);
+    }
+
 
     //generate pdf
     const input = fs.createReadStream(Helpers.resourcesPath('docs/tmp/pid.tex'))
