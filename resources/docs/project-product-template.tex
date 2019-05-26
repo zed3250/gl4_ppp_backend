@@ -1,0 +1,43 @@
+\documentclass{report}
+
+\usepackage{prince2}
+\usepackage{hyperref}
+\usepackage{color}
+
+\usepackage[T1]{fontenc}
+\usepackage{titlesec, blindtext, color}
+\definecolor{gray75}{gray}{0.75}
+\newcommand{\hsp}{\hspace{20pt}}
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\Huge\bfseries}
+\renewcommand\thesection{\arabic{section}.}
+\begin{document}
+\projectproduct
+\project{@ProjectName}
+\date{\today}
+\author{@Author}
+\version{@Version}
+
+\maketitle
+
+\tableofcontents
+
+\newpage
+\section{Development Skills Required}
+@DevelopmentSkillsRequired
+
+\section{Customer's Quality Expectations}
+@CustomerQualityExpectations
+
+\section{Acceptance Criteria}
+@AcceptanceCriteria
+
+\section{Project Level Quality Tolerances}
+@ProjectLevelQualityTolerances
+
+\section{Acceptance Method}
+@AcceptanceMethod
+
+\section{Acceptance Responsibilities}
+@AcceptanceResponsibilities
+
+\end{document}

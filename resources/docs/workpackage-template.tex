@@ -1,0 +1,63 @@
+\documentclass{report}
+
+\usepackage{prince2}
+\usepackage{hyperref}
+\usepackage{color}
+
+\usepackage[T1]{fontenc}
+\usepackage{titlesec, blindtext, color}
+\definecolor{gray75}{gray}{0.75}
+\newcommand{\hsp}{\hspace{20pt}}
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\Huge\bfseries}
+\renewcommand\thesection{\arabic{section}.}
+\begin{document}
+\documenttype{Work Package}
+\project{@ProjectName}
+\date{\today}
+\author{@Author}
+\version{@Version}
+
+\maketitle
+
+\tableofcontents
+
+\newpage
+
+
+\section{Description}
+@Description
+
+\section{Techniques, Processes \& Procedures}
+@TechniquesProcessesAndProcedures
+
+\section{Development Interfaces}
+@DevelopmentInterfaces
+
+\section{Operations and Maintenance Interfaces}
+@OperationsAndMaintenanceInterfaces
+
+\section{Configuration Management Requirements}
+@ConfigurationManagementRequirements
+
+\section{Joint Agreements}
+@JointAgreements
+
+\section{Tolerances}
+@Tolerances
+
+\section{Constraints}
+@Constraints
+
+\section{Reporting Arrangements}
+@ReportingArrangements
+
+\section{Problem Handling and Escalation}
+@ProblemHandlingAndEscalation
+
+\section{Extracts or References}
+@ExtractsOrReferences
+
+\section{Approval Method}
+@ApprovalMethod
+
+\end{document}
