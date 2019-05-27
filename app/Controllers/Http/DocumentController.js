@@ -101,12 +101,13 @@ class DocumentController {
     catch (error) {
       console.error('Error occurred:', error);
     }
-    //ExecutiveSummary
-    var executiveSummary = request.all().executiveSummary;
+    
+    //MainGoal
+    var mainGoal = request.all().mainGoal;
     options = {
       files: Helpers.resourcesPath('docs/tmp/pid.tex'),
-      from: '@ExecutiveSummary',
-      to: executiveSummary,
+      from: '@MainGoal',
+      to: mainGoal,
     };
     try {
       await replace(options);
@@ -114,89 +115,13 @@ class DocumentController {
     catch (error) {
       console.error('Error occurred:', error);
     }
-    //Reasons
-    var reasons = request.all().reasons;
+    
+    //DesiredOutcomes
+    var desiredOutcomes = request.all().desiredOutcomes;
     options = {
       files: Helpers.resourcesPath('docs/tmp/pid.tex'),
-      from: '@Reasons',
-      to: reasons,
-    };
-    try {
-      await replace(options);
-    }
-    catch (error) {
-      console.error('Error occurred:', error);
-    }
-    //Options
-    options = {
-      files: Helpers.resourcesPath('docs/tmp/pid.tex'),
-      from: '@Options',
-      to:  request.all().options
-    };
-    try {
-      await replace(options);
-    }
-    catch (error) {
-      console.error('Error occurred:', error);
-    }
-    //ExpectedBenefitsAndDisbenefits
-    var expectedBenefitsAndDisbenefits = request.all().expectedBenefitsAndDisbenefits;
-    options = {
-      files: Helpers.resourcesPath('docs/tmp/pid.tex'),
-      from: '@ExpectedBenefitsAndDisbenefits',
-      to:  expectedBenefitsAndDisbenefits
-    };
-    try {
-      await replace(options);
-    }
-    catch (error) {
-      console.error('Error occurred:', error);
-    }
-    //Risks
-    var risks = request.all().risks;
-    options = {
-      files: Helpers.resourcesPath('docs/tmp/pid.tex'),
-      from: '@Risks',
-      to:  risks
-    };
-    try {
-      await replace(options);
-    }
-    catch (error) {
-      console.error('Error occurred:', error);
-    }
-    //Cost
-    var cost = request.all().cost;
-    options = {
-      files: Helpers.resourcesPath('docs/tmp/pid.tex'),
-      from: '@Cost',
-      to:  cost
-    };
-    try {
-      await replace(options);
-    }
-    catch (error) {
-      console.error('Error occurred:', error);
-    }
-    //Timescales
-    var timescales = request.all().timescales;
-    options = {
-      files: Helpers.resourcesPath('docs/tmp/pid.tex'),
-      from: '@Timescales',
-      to:  timescales
-    };
-    try {
-      await replace(options);
-    }
-    catch (error) {
-      console.error('Error occurred:', error);
-    }
-    //InvestmentAppraisal
-    var investmentAppraisal = request.all().investmentAppraisal;
-    options = {
-      files: Helpers.resourcesPath('docs/tmp/pid.tex'),
-      from: '@InvestmentAppraisal',
-      to:  investmentAppraisal
+      from: '@DesiredOutcomes',
+      to: desiredOutcomes,
     };
     try {
       await replace(options);
@@ -205,6 +130,201 @@ class DocumentController {
       console.error('Error occurred:', error);
     }
 
+    //Interfaces
+    var interfaces = request.all().interfaces;
+    options = {
+      files: Helpers.resourcesPath('docs/tmp/pid.tex'),
+      from: '@Interfaces',
+      to: interfaces,
+    };
+    try {
+      await replace(options);
+    }
+    catch (error) {
+      console.error('Error occurred:', error);
+    }
+
+    //ProjectApproach
+    var projectApproach = request.all().projectApproach;
+    options = {
+      files: Helpers.resourcesPath('docs/tmp/pid.tex'),
+      from: '@ProjectApproach',
+      to: projectApproach,
+    };
+    try {
+      await replace(options);
+    }
+    catch (error) {
+      console.error('Error occurred:', error);
+    }
+
+    //AcceptanceResponsibilities
+    var acceptanceResponsibilities = request.all().acceptanceResponsibilities;
+    options = {
+      files: Helpers.resourcesPath('docs/tmp/pid.tex'),
+      from: '@AcceptanceResponsibilities',
+      to: acceptanceResponsibilities,
+    };
+    try {
+      await replace(options);
+    }
+    catch (error) {
+      console.error('Error occurred:', error);
+    }
+
+    //ProjectProductDescription
+    var projectProductDescription = request.all().projectProductDescription;
+    options = {
+      files: Helpers.resourcesPath('docs/tmp/pid.tex'),
+      from: '@ProjectProductDescription',
+      to: projectProductDescription,
+    };
+    try {
+      await replace(options);
+    }
+    catch (error) {
+      console.error('Error occurred:', error);
+    }
+
+    //BusinessCase
+    var businessCase = request.all().businessCase;
+    options = {
+      files: Helpers.resourcesPath('docs/tmp/pid.tex'),
+      from: '@BusinessCase',
+      to: businessCase,
+    };
+    try {
+      await replace(options);
+    }
+    catch (error) {
+      console.error('Error occurred:', error);
+    }
+
+    //StakeholderList
+    var stakeholderList = request.all().stakeholderList;
+    options = {
+      files: Helpers.resourcesPath('docs/tmp/pid.tex'),
+      from: '@StakeholderList',
+      to: stakeholderList,
+    };
+    try {
+      await replace(options);
+    }
+    catch (error) {
+      console.error('Error occurred:', error);
+    }
+
+    //QualityManagementApproach
+    var qualityManagementApproach = request.all().qualityManagementApproach;
+    options = {
+      files: Helpers.resourcesPath('docs/tmp/pid.tex'),
+      from: '@QualityManagementApproach',
+      to: qualityManagementApproach,
+    };
+    try {
+      await replace(options);
+    }
+    catch (error) {
+      console.error('Error occurred:', error);
+    }
+
+    //ChangeControlApproach
+    var changeControlApproach = request.all().changeControlApproach;
+    options = {
+      files: Helpers.resourcesPath('docs/tmp/pid.tex'),
+      from: '@ChangeControlApproach',
+      to: changeControlApproach,
+    };
+    try {
+      await replace(options);
+    }
+    catch (error) {
+      console.error('Error occurred:', error);
+    }
+
+    //RiskManagementApproach
+    var riskManagementApproach = request.all().riskManagementApproach;
+    options = {
+      files: Helpers.resourcesPath('docs/tmp/pid.tex'),
+      from: '@RiskManagementApproach',
+      to: riskManagementApproach,
+    };
+    try {
+      await replace(options);
+    }
+    catch (error) {
+      console.error('Error occurred:', error);
+    }
+
+    //CommunicationManagementApproach
+    var communicationManagementApproach = request.all().communicationManagementApproach;
+    options = {
+      files: Helpers.resourcesPath('docs/tmp/pid.tex'),
+      from: '@CommunicationManagementApproach',
+      to: communicationManagementApproach,
+    };
+    try {
+      await replace(options);
+    }
+    catch (error) {
+      console.error('Error occurred:', error);
+    }
+
+    //ProjectPlan
+    var projectPlan = request.all().projectPlan;
+    options = {
+      files: Helpers.resourcesPath('docs/tmp/pid.tex'),
+      from: '@ProjectPlan',
+      to: projectPlan,
+    };
+    try {
+      await replace(options);
+    }
+    catch (error) {
+      console.error('Error occurred:', error);
+    }
+
+    //ProjectManagementTeam
+    var projectManagementTeam = request.all().projectManagementTeam;
+    options = {
+      files: Helpers.resourcesPath('docs/tmp/pid.tex'),
+      from: '@ProjectManagementTeam',
+      to: projectManagementTeam,
+    };
+    try {
+      await replace(options);
+    }
+    catch (error) {
+      console.error('Error occurred:', error);
+    }
+
+    //ProjectControls
+    var projectControls = request.all().projectControls;
+    options = {
+      files: Helpers.resourcesPath('docs/tmp/pid.tex'),
+      from: '@ProjectControls',
+      to: projectControls,
+    };
+    try {
+      await replace(options);
+    }
+    catch (error) {
+      console.error('Error occurred:', error);
+    }
+
+    //Tailoring
+    var tailoring = request.all().tailoring;
+    options = {
+      files: Helpers.resourcesPath('docs/tmp/pid.tex'),
+      from: '@Tailoring',
+      to: tailoring,
+    };
+    try {
+      await replace(options);
+    }
+    catch (error) {
+      console.error('Error occurred:', error);
+    }
 
     //generate pdf
     const input = fs.createReadStream(Helpers.resourcesPath('docs/tmp/pid.tex'))
@@ -247,6 +367,66 @@ class DocumentController {
     //return
     return project;
   }
+
+  async createBusinessCase({ request, params }) {
+    //create a copy of the template
+    await fs.copyFileSync(Helpers.resourcesPath('docs/business-case-template.tex'), Helpers.resourcesPath('docs/tmp/business-case.tex'));
+    //background
+    var background = request.all().background;
+    var options = {
+      files: Helpers.resourcesPath('docs/tmp/business-case.tex'),
+      from: '@Background',
+      to: background,
+    };
+    try {
+      await replace(options);
+    }
+    catch (error) {
+      console.error('Error occurred:', error);
+    }
+
+    //generate pdf
+    const input = fs.createReadStream(Helpers.resourcesPath('docs/tmp/pid.tex'))
+    const output = fs.createWriteStream(Helpers.resourcesPath('docs/tmp/generated.pdf'))
+    const pdf = latex(input)
+    pdf.pipe(output)
+    pdf.on('error', err => console.error(err))
+    pdf.on('finish', () => {
+      //create document
+      var document = {};
+      document._id = new ObjectID();
+      document.docName = "Project Initiation Documentation.pdf";
+      document.docType = "Project Initiation Documentation";
+
+      var projectId = params.idProject;
+      var processId = params.idProcess;
+
+      var path = Helpers.publicPath(projectId + '/' + processId + '/' + document.docName);
+      document.docPath = path;
+
+      //move pdf
+      if (!fs.existsSync(Helpers.publicPath(projectId + '/' + processId + '/'))) {
+        fs.mkdirSync(Helpers.publicPath(projectId + '/' + processId), true);
+      }
+      fs.renameSync(Helpers.resourcesPath('docs/tmp/generated.pdf'), path);
+
+      //delete tmp
+      fs.unlinkSync(Helpers.resourcesPath('docs/tmp/pid.tex'));
+
+      //update project
+      var project = await Project.query().where({ _id: projectId }).first();
+      project.processes.forEach(element => {
+        if (element._id == process) {
+          element.docs.push(document);
+        }
+      });
+    })
+    await project.save();
+
+    //return
+    return project;
+  }
+
 
   getDocument({ request, response }) {
     //get attributes
