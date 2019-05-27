@@ -31,6 +31,8 @@ Route.post('/updateProcess', 'NotificationController.updateProcess');
 
 
 Route.post('/create/pid/:idProject/:idProcess', 'DocumentController.createPid');
+Route.post('/create/businesscase/:idProject/:idProcess', 'DocumentController.createBusinessCase');
+
 Route.get('/doc/:idProject/:idProcess/:name', 'DocumentController.downloadDocument');
 
 

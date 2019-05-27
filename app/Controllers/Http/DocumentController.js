@@ -371,12 +371,153 @@ class DocumentController {
   async createBusinessCase({ request, params }) {
     //create a copy of the template
     await fs.copyFileSync(Helpers.resourcesPath('docs/business-case-template.tex'), Helpers.resourcesPath('docs/tmp/business-case.tex'));
-    //background
-    var background = request.all().background;
+
+    //ProjectName
+    var projectName = request.all().projectName;
     var options = {
       files: Helpers.resourcesPath('docs/tmp/business-case.tex'),
-      from: '@Background',
-      to: background,
+      from: '@ProjectName',
+      to: projectName,
+    };
+    try {
+      await replace(options);
+    }
+    catch (error) {
+      console.error('Error occurred:', error);
+    }
+
+    //Author
+    var author = request.all().author;
+    options = {
+      files: Helpers.resourcesPath('docs/tmp/business-case.tex'),
+      from: '@Author',
+      to: author,
+    };
+    try {
+      await replace(options);
+    }
+    catch (error) {
+      console.error('Error occurred:', error);
+    }
+
+    //Version
+    var version = request.all().version;
+    options = {
+      files: Helpers.resourcesPath('docs/tmp/business-case.tex'),
+      from: '@Version',
+      to: version,
+    };
+    try {
+      await replace(options);
+    }
+    catch (error) {
+      console.error('Error occurred:', error);
+    }
+
+    //ExecutiveSummary
+    var executiveSummary = request.all().executiveSummary;
+    options = {
+      files: Helpers.resourcesPath('docs/tmp/business-case.tex'),
+      from: '@ExecutiveSummary',
+      to: executiveSummary,
+    };
+    try {
+      await replace(options);
+    }
+    catch (error) {
+      console.error('Error occurred:', error);
+    }
+
+    //Reasons
+    var reasons = request.all().reasons;
+    options = {
+      files: Helpers.resourcesPath('docs/tmp/business-case.tex'),
+      from: '@Reasons',
+      to: reasons,
+    };
+    try {
+      await replace(options);
+    }
+    catch (error) {
+      console.error('Error occurred:', error);
+    }
+
+    //Options
+    var opt = request.all().options;
+    options = {
+      files: Helpers.resourcesPath('docs/tmp/business-case.tex'),
+      from: '@Options',
+      to: opt,
+    };
+    try {
+      await replace(options);
+    }
+    catch (error) {
+      console.error('Error occurred:', error);
+    }
+
+    //ExpectedBenefitsAndDisbenefits
+    var expectedBenefitsAndDisbenefits = request.all().expectedBenefitsAndDisbenefits;
+    options = {
+      files: Helpers.resourcesPath('docs/tmp/business-case.tex'),
+      from: '@ExpectedBenefitsAndDisbenefits',
+      to: expectedBenefitsAndDisbenefits,
+    };
+    try {
+      await replace(options);
+    }
+    catch (error) {
+      console.error('Error occurred:', error);
+    }
+
+    //Risks
+    var risks = request.all().risks;
+    options = {
+      files: Helpers.resourcesPath('docs/tmp/business-case.tex'),
+      from: '@Risks',
+      to: risks,
+    };
+    try {
+      await replace(options);
+    }
+    catch (error) {
+      console.error('Error occurred:', error);
+    }
+
+    //Cost
+    var cost = request.all().cost;
+    options = {
+      files: Helpers.resourcesPath('docs/tmp/business-case.tex'),
+      from: '@Cost',
+      to: cost,
+    };
+    try {
+      await replace(options);
+    }
+    catch (error) {
+      console.error('Error occurred:', error);
+    }
+
+    //Timescales
+    var timescales = request.all().timescales;
+    options = {
+      files: Helpers.resourcesPath('docs/tmp/business-case.tex'),
+      from: '@Timescales',
+      to: timescales,
+    };
+    try {
+      await replace(options);
+    }
+    catch (error) {
+      console.error('Error occurred:', error);
+    }
+
+    //InvestmentAppraisal
+    var investmentAppraisal = request.all().investmentAppraisal;
+    options = {
+      files: Helpers.resourcesPath('docs/tmp/business-case.tex'),
+      from: '@InvestmentAppraisal',
+      to: investmentAppraisal,
     };
     try {
       await replace(options);
@@ -386,7 +527,7 @@ class DocumentController {
     }
 
     //generate pdf
-    const input = fs.createReadStream(Helpers.resourcesPath('docs/tmp/pid.tex'))
+    const input = fs.createReadStream(Helpers.resourcesPath('docs/tmp/business-case.tex'))
     const output = fs.createWriteStream(Helpers.resourcesPath('docs/tmp/generated.pdf'))
     const pdf = latex(input)
     pdf.pipe(output)
@@ -395,8 +536,8 @@ class DocumentController {
       //create document
       var document = {};
       document._id = new ObjectID();
-      document.docName = "Project Initiation Documentation.pdf";
-      document.docType = "Project Initiation Documentation";
+      document.docName = "Business Case.pdf";
+      document.docType = "Business Case";
 
       var projectId = params.idProject;
       var processId = params.idProcess;
@@ -411,7 +552,7 @@ class DocumentController {
       fs.renameSync(Helpers.resourcesPath('docs/tmp/generated.pdf'), path);
 
       //delete tmp
-      fs.unlinkSync(Helpers.resourcesPath('docs/tmp/pid.tex'));
+      fs.unlinkSync(Helpers.resourcesPath('docs/tmp/business-case.tex'));
 
       //update project
       var project = await Project.query().where({ _id: projectId }).first();
