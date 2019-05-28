@@ -535,6 +535,25 @@ class DocumentController {
       console.error('Error occurred:', error);
     }
 
+    //create document
+    var document = {};
+    document._id = new ObjectID();
+    document.docName = "Business Case.pdf";
+    document.docType = "Business Case";
+    document.permittedRoles = ["Project Manager", "Project Board"];
+
+    var path = Helpers.publicPath(projectId + '/' + processId + '/' + document.docName);
+    document.docPath = path;
+
+      //update project
+      project.processes.forEach(element => {
+        if (element._id == processId) {
+          element.docs.push(document);
+        }
+      });
+
+    await project.save();
+
     //generate pdf
     const input = fs.createReadStream(Helpers.resourcesPath('docs/tmp/business-case.tex'))
     const output = fs.createWriteStream(Helpers.resourcesPath('docs/tmp/generated.pdf'))
@@ -542,15 +561,6 @@ class DocumentController {
     pdf.pipe(output)
     pdf.on('error', err => console.error(err))
     pdf.on('finish', () => {
-      //create document
-      var document = {};
-      document._id = new ObjectID();
-      document.docName = "Business Case.pdf";
-      document.docType = "Business Case";
-
-      var path = Helpers.publicPath(projectId + '/' + processId + '/' + document.docName);
-      document.docPath = path;
-
       //move pdf
       if (!fs.existsSync(Helpers.publicPath(projectId + '/' + processId + '/'))) {
         fs.mkdirSync(Helpers.publicPath(projectId + '/' + processId), true);
@@ -560,15 +570,7 @@ class DocumentController {
       //delete tmp
       fs.unlinkSync(Helpers.resourcesPath('docs/tmp/business-case.tex'));
 
-      //update project
-      project.processes.forEach(element => {
-        if (element._id == process) {
-          element.docs.push(document);
-        }
-      });
     })
-    await project.save();
-
     //return
     return project;
   }
