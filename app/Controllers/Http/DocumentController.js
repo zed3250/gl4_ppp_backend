@@ -47,6 +47,12 @@ class DocumentController {
   }
 
   async createPid({ request, params }) {
+
+    //get project
+    var projectId = params.idProject;
+    var processId = params.idProcess;
+    var project = await Project.query().where({ _id: projectId }).first();
+
     //create a copy of the template
     await fs.copyFileSync(Helpers.resourcesPath('docs/pid-template.tex'), Helpers.resourcesPath('docs/tmp/pid.tex'));
     //background
@@ -339,8 +345,6 @@ class DocumentController {
       document.docName = "Project Initiation Documentation.pdf";
       document.docType = "Project Initiation Documentation";
 
-      var projectId = params.idProject;
-      var processId = params.idProcess;
 
       var path = Helpers.publicPath(projectId + '/' + processId + '/' + document.docName);
       document.docPath = path;
@@ -355,7 +359,6 @@ class DocumentController {
       fs.unlinkSync(Helpers.resourcesPath('docs/tmp/pid.tex'));
 
       //update project
-      var project = await Project.query().where({ _id: projectId }).first();
       project.processes.forEach(element => {
         if (element._id == process) {
           element.docs.push(document);
@@ -365,10 +368,16 @@ class DocumentController {
     await project.save();
 
     //return
-    return project;
+    return true;
   }
 
   async createBusinessCase({ request, params }) {
+
+    //get project
+    var projectId = params.idProject;
+    var processId = params.idProcess;
+    var project = await Project.query().where({ _id: projectId }).first();
+
     //create a copy of the template
     await fs.copyFileSync(Helpers.resourcesPath('docs/business-case-template.tex'), Helpers.resourcesPath('docs/tmp/business-case.tex'));
 
@@ -539,9 +548,6 @@ class DocumentController {
       document.docName = "Business Case.pdf";
       document.docType = "Business Case";
 
-      var projectId = params.idProject;
-      var processId = params.idProcess;
-
       var path = Helpers.publicPath(projectId + '/' + processId + '/' + document.docName);
       document.docPath = path;
 
@@ -555,7 +561,6 @@ class DocumentController {
       fs.unlinkSync(Helpers.resourcesPath('docs/tmp/business-case.tex'));
 
       //update project
-      var project = await Project.query().where({ _id: projectId }).first();
       project.processes.forEach(element => {
         if (element._id == process) {
           element.docs.push(document);
