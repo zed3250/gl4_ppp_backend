@@ -31,7 +31,7 @@ class NotificationController {
       project.notifs.push(notif);
 
       await project.save();
-      return "Notif added";
+      return project;
 
 
     }

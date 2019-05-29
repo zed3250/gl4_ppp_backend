@@ -23,11 +23,9 @@ Route.post('/doc', 'DocumentController.createDocument');
 Route.get('/user/:id/projects','ProjectController.getUserProjects');
 Route.post('/showdoc', 'DocumentController.getDocument');
 Route.get('/mandate/:id', 'DocumentController.getMandate');
-Route.post('/process', 'ProcessController.createProcess');
+Route.post('/process/:id', 'ProcessController.createProcess');
 Route.post('/notif', 'NotificationController.createNotif');
 Route.post('/userByEmail', 'UserController.getUserByEmail');
-Route.post('/process', 'NotificationController.createProcess');
-Route.post('/updateProcess', 'NotificationController.updateProcess');
 
 
 Route.post('/create/pid/:idProject/:idProcess', 'DocumentController.createPid');

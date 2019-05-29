@@ -74,7 +74,8 @@ class ProjectController {
 
     var process = {};
     process._id = new ObjectID();
-    process.name = "Project initiation";
+    process.name = "Project Startup";
+    process.type = "Project Startup";
     process.description = "Mandate For the Project"
     process.startDate = project.startDate;
     process.endDate = request.input('processEndDate');

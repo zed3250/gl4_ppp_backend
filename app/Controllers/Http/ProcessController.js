@@ -1,5 +1,6 @@
 'use strict';
 const Project = use('App/Models/Project');
+var ObjectID = require('mongodb').ObjectID;
 
 /**
  * Controller to manage Processes
@@ -14,6 +15,7 @@ class ProcessController {
         var projectId = params.id;
         var project  = await Project.query().where({_id: projectId}).first();
         var process = request.all();
+        process._id = new ObjectID();
         process.isActive = true;
         project.processes.forEach(element => {
             element.isActive = false;
